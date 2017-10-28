@@ -2,7 +2,7 @@
 
 
 ## About
-In this blog post we covered document classification using <a href="http://scikit-learn.org/">Scikit-learn</a> and the <a href="http://qwone.com/~jason/20Newsgroups/">20 News Groups</a>a> dataset. We went over the basics of term frequency-inverse document frequency, pipelines and the Naive Bayes classifier
+In this blog post we covered document classification using <a href="http://scikit-learn.org/">Scikit-learn</a> and the <a href="http://qwone.com/~jason/20Newsgroups/">20 News Groups</a> dataset. We went over the basics of term frequency-inverse document frequency, pipelines and the Naive Bayes classifier
 
 
 ## Requirements
