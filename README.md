@@ -13,7 +13,7 @@ You can install the dependencies and access the notebook using <a href="https://
 
 	docker build -t doc_class .
 
-Followed by running the caommand container:
+Followed by running the command container:
 
 	docker run -p 8888:8888 -t doc_class
 
