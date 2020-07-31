@@ -1,0 +1,5 @@
+*.ipynb_checkpoints
+*.local
+*__pycache__
+*.DS_Store
+*.bash_history

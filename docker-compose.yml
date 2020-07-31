@@ -14,7 +14,7 @@ services:
     build: notebooks
     container_name: "notebook"
     volumes:
-      - "./notebooks:/home/jovyan/NLP"
+      - "./:/home/jovyan/NLP"
     ports:
       - "8888:8888"
     links:
