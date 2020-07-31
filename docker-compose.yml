@@ -17,6 +17,8 @@ services:
       - "./:/home/jovyan/NLP"
     ports:
       - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
     links:
       - mongodb
     depends_on:
