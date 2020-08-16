@@ -35,9 +35,14 @@ RUN mkdir /home/$NB_USER/NLP/ && \
 
 WORKDIR /home/$NB_USER/NLP/
 
+RUN git config --global user.email "mdh266@gmail.com" && \
+    git config --global user.name "Mike Harmon" 
+
 COPY requirements.txt /home/$NB_USER/NLP/ 
 
 RUN pip install -r /home/$NB_USER/NLP/requirements.txt
+# RUN pip install --upgrade jupyterlab-git
+# RUN jupyter lab build
 
 # Import matplotlib the first time to build the font cache.
 ENV XDG_CACHE_HOME /home/$NB_USER/.cache/ 
