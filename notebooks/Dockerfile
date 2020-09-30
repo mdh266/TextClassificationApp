@@ -18,7 +18,6 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     netcat \
     texlive-fonts-extra \
     texlive-fonts-recommended \
-    texlive-generic-recommended \
     texlive-latex-base \
     texlive-latex-extra \
     texlive-xetex \
@@ -41,8 +40,8 @@ RUN git config --global user.email "mdh266@gmail.com" && \
 COPY requirements.txt /home/$NB_USER/NLP/ 
 
 RUN pip install -r /home/$NB_USER/NLP/requirements.txt
-# RUN pip install --upgrade jupyterlab-git
-# RUN jupyter lab build
+
+RUN jupyter labextension install jupyterlab-plotly@4.10.0
 
 # Import matplotlib the first time to build the font cache.
 ENV XDG_CACHE_HOME /home/$NB_USER/.cache/ 
