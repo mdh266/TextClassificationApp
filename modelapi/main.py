@@ -1,30 +1,32 @@
-from flask import Flask, request
-import json
-import joblib
-import pandas as pd
-import imblearn
 from modelapi.Tokenizer import StemTokenizer
 from modelapi.Relabeler import relabel
+import joblib
 
-app = Flask(__name__)
+from fastapi import FastAPI
+from pydantic import BaseModel
+import uvicorn
+import imblearn
 
+app = FastAPI()
 
-@app.route('/predict', methods=['POST'])
-def predict():
-  if request.method == 'POST':
-    try:
-      text = request.json['text']
-      df   = pd.DataFrame({"text":[text]})
+class InputDoc(BaseModel):
+  text  : str
 
-      model = joblib.load("model/weighted_svm.joblib")
-      result = model.predict(df)
-      label  = relabel(result[0])
-      
-      return json.dumps(label)
+class LabeledDoc(InputDoc):
+  label : str
 
-    except:
-      return json.dumps({'trace': traceback.format_exc()})
+@app.post('/predict', response_model=LabeledDoc, status_code=200)
+async def predict(doc : InputDoc):
+    """
+    Help from https://testdriven.io/blog/fastapi-machine-learning/
+    """
 
+    text   = doc.text
+    model  = joblib.load("models/weighted_svm.joblib")
+    result = model.predict([text])
+    label  = relabel(result[0])
+
+    return {"text": text, "label":label}
 
 if __name__ == "__main__":
-  app.run(host='0.0.0.0', port=8080)
+    uvicorn.run(app, host="0.0.0.0", port=8080)

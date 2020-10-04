@@ -1,23 +1,31 @@
-# -*- coding: utf-8 -*-
-"""
-    Setup file for temp.
-    Use setup.cfg to configure your project.
+#!/usr/bin/env python
 
-    This file was generated with PyScaffold 3.2.3.
-    PyScaffold helps you to put up the scaffold of your new Python project.
-    Learn more under: https://pyscaffold.org/
-"""
-import sys
+"""The setup script."""
 
-from pkg_resources import VersionConflict, require
-from setuptools import setup
+from setuptools import setup, find_packages
 
-try:
-    require('setuptools>=38.3')
-except VersionConflict:
-    print("Error: version of setuptools is too old (<38.3)!")
-    sys.exit(1)
-
-
-if __name__ == "__main__":
-    setup(use_pyscaffold=True)
+setup(
+    author="Mike Harmon",
+    author_email='mdh266@gmail.com',
+    python_requires='>=3.5',
+    classifiers=[
+        'Development Status :: 2 - Pre-Alpha',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+    ],
+    description="",
+    license="MIT license",
+    include_package_data=True,
+    keywords='modelapi',
+    name='modelapi',
+    packages=find_packages(include=['modelapi', 'modelapi.*']),
+    url='https://github.com/mdh266/modelapi',
+    version='0.1.0',
+    zip_safe=False,
+)
