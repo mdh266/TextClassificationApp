@@ -15,6 +15,10 @@ class InputDoc(BaseModel):
 class LabeledDoc(InputDoc):
   label : str
 
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
 @app.post('/predict', response_model=LabeledDoc, status_code=200)
 async def predict(doc : InputDoc):
     """
