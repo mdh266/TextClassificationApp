@@ -8,7 +8,7 @@ RUN mkdir ds
 WORKDIR /ds
 
 # copy the files over
-COPY run.py /ds
-COPY flaskapp /ds/flaskapp
+COPY webapp.py /ds
+COPY app /ds/app
 
-CMD exec gunicorn -w 2 -t 2 -b 0.0.0.0:8080 flaskapp:app
+CMD exec gunicorn -w 2 -t 2 -b 0.0.0.0:8080 webapp:app
