@@ -45,7 +45,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/input">Document Classifier</a>
+          <a class="navbar-brand" href="/input">ArXiv Paper Classifier</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -60,30 +60,28 @@
     <div class="starter-template">
     </div>
     <body>
-    <h3>About:</h3> This app will classifier a computer science paper abstract and predict the topic using a machine learning model.
+    <h3>About:</h3> This app will classify computer science papers from their abstract and predict its topic using machine learning model hosted on Google Cloud Run.
 
     </br>
     <h3>How To Use:</h3>
      <p>
-        Go to <a href="https://arxiv.org" target="_blank">arXiv.org</a> website and choose a topic from :
+        Go to arXiv.org website using one of links on the following topics:
         <ul>
         <li> <a href="https://arxiv.org/list/cs.AI/recent" target="_blank">Artifical Intelligence</a> </li>
         <li> <a href="https://arxiv.org/list/cs.CV/recent" target="_blank"">Computer Vision</a> </li>
         <li> <a href="https://arxiv.org/list/cs.LG/recent" target="_blank"">Machine Learning</a></li>
         <li> <a href="https://arxiv.org/list/cs.RO/recent" target="_blank"">Robitics</a> </li>
         </ul>
-      Click on the link for paper of your choice,
+      Click on the link for paper of your choice then copy and paste the abstract of paper into the form below.
       </p>
       <img src="/static/images/arxiv.png" alt="arXiv", width="400" height="300">
       <img src="/static/images/abstract.png" alt="abstract", width="400" height="300">
       <p>
       </br>
-      then copy and paste the abstract into the paper into the window below.
-      </br>
       </p>
       <form  action="/output" method="GET">
         <div class="form-group">
-          <label for="text">Enter abstract for paper:</label>
+          <label for="text">Enter abstract of paper:</label>
           </br>
           <textarea type="text" id="text" name="text" rows="10" cols="80">
           </textarea>
