@@ -1,7 +1,6 @@
 from typing import Set, List
 from nltk.tokenize import word_tokenize
 from nltk.stem import SnowballStemmer
-from nltk.stem import WordNetLemmatizer
 
 
 class StemTokenizer(object):
