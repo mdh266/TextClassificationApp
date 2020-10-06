@@ -16,11 +16,11 @@ class LabeledDoc(InputDoc):
   label : str
 
 @app.get("/")
-async def root():
+def root():
     return {"message": "Hello World"}
 
 @app.post('/predict', response_model=LabeledDoc, status_code=200)
-async def predict(doc : InputDoc):
+def predict(doc : InputDoc):
     """
     Help from https://testdriven.io/blog/fastapi-machine-learning/
     """
@@ -33,4 +33,4 @@ async def predict(doc : InputDoc):
     return {"text": text, "label":label}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8080)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
