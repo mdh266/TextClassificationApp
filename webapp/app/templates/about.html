@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Simple App</title>
+    <title>Document Classifier</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -54,22 +54,24 @@
             <li class="active"><a href="https://github.com/mdh266/DocumentClassificationNLP">Source Code</a></li>
           </ul>
         </div><!--/.nav-collapse -->
-
-
       </div>
     </nav>
-
 	<div class="container">
 
     <div class="starter-template">
-        <body>
-        <h2>The abstract you entered is:</h2>
-        </br>
-        {{text}}
-        </br>
-        </br>
-         <h3> This article is about {{topic}}! </h3>
-      </body>
+    </div>
+    <body>
+    <h3>About:</h3> This app will classify computer science papers from their abstract and predict the papers topic using machine learning model hosted on Google Cloud Run.
+
+    <h3>How The Web App Works:</h3>  This web app is built using <a href="https://fastapi.tiangolo.com/">FastAPI</a> and <a href="https://getbootstrap.com">Bootstrap</a>. Using Bootstrap allows us to have a beautiful responsive website without having to write HTML or JavaScript. I deployed the app using <a href="https://docker.com">Docker</a> and <a href="https://cloud.google.com/run">Google Cloud Run</a> to build out a serverless web application. The advantage of using a serverless framework for me is cost effectiveness: I don't pay much at all unless people use my web app a ton and I don't expect people to visit this app very often. However, due to the serverless framework I will have issues with latency, which I can live with.
+
+    When the user enters the text and hits the "Submit" button the Python script then passes the text to another Rest APi that serves a model that predicts the topic of the paper. To learn more about how I deployed this app checkout <a href="http://michael-harmon.com/blog/NLP3.html">this blogpost</a>.
+
+
+    <h3>How The Model Works:</h3> 
+    The model for this app is a text classification algorithm using <a href="https://scikit-learn.org/">Scikit-learn</a> library. It was trained on an imbalanced dataset (corpus) that I created from summaries of papers published on <a href="https://arxiv.org/">arxiv.org</a>. The topic of each paper was already labeled as the category therefore alleviating the need for me to label the dataset. The data was stored a <a href="https://www.mongodb.com/">MongoDB</a> database and used to train a Support Vector Machine that uses weighting to alleviate the imbalance in the number of paper topics. You can read more about this part of the model development in my <a href="http://michael-harmon.com/blog/NLP1.html">first blog post</a>. To improve the model performance we used stop word removal and stemming through the <a href="https://www.nltk.org/">Natural Language Toolkit (NLTK)</a>. Finally, we persist the entire pipeline using <a href="https://joblib.readthedocs.io/">Joblib</a>. You can read more about this aspect of the model training in the <a href="http://michael-harmon.com/blog/NLP2.html">second blog post</a>.
+
+    </body>
     </div>
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

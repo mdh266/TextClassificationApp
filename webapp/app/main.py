@@ -21,14 +21,14 @@ def input_page(request: Request):
 	return templates.TemplateResponse("input.html", {"request": request})
 
 
-@app.get("/output")
+@app.get("/output", response_class=HTMLResponse)
 def output_page(request: Request, text : str):
 
 	clean_text  = re.sub(r"[^a-zA-Z0-9_]", " ", text)
 
 	data  = '{"text":"' + clean_text + '"}'
 
-	result = requests.post(url   = "https://modelapi-j3zdo3lhcq-uc.a.run.app/predict",
+	result = requests.post(url   = "http://0.0.0.0:8000/predict",
                          data  = data,
                          headers = {'Content-Type':'application/json'})
 
@@ -37,6 +37,12 @@ def output_page(request: Request, text : str):
 	return templates.TemplateResponse("output.html", {"request": request, 
 																									 "text": text,
 																									 "topic": topic})
+
+@app.get('/about',response_class=HTMLResponse)
+def about_page(request: Request):
+
+	return templates.TemplateResponse("about.html", {"request": request})
+
 
 if __name__ == "__main__":
 	uvicorn.run(app, host="0.0.0.0", port=8080)
