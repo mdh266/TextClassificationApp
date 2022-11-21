@@ -10,5 +10,5 @@ scipy==1.3.1
 numpy==1.17.4
 ipywidgets>=7.5
 plotly==4.10.0
-tensorflow==2.8.1
+tensorflow==2.9.3
 optuna==2.10.0
